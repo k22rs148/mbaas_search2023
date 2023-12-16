@@ -59,6 +59,15 @@
                 })
         }
 
+        function searchRarity() {
+            let rarity = $("#rarity").val();
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass.equalTo("rarity", rarity).fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
         function showResults(results) {
             // テーブルのヘッダを生成
             let msg = "<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th><th>rarity</th></tr>";
@@ -163,6 +172,10 @@
         <label for="defence">defence:</label>
         <input id="defence" type="number" placeholder="defence point">
     </div>
+    <div>
+        <label for="rarity">rarity:</label>
+        <input id="rarity" type="text" placeholder="monster rarity">
+    </div>
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
         <button class="btn" onclick="searchName()">Name</button>
@@ -179,7 +192,7 @@
         <button class="btn" onclick="searchDefence()">Defence</button>
         <button class="btn" onclick="searchDefenceGTE()">Defence &gt=</button>
         <br>
-        <button class="btn" onclick="searchrarity()">Rarity</button>
+        <button class="btn" onclick="searchRarity()">Rarity</button>
     </div>
     <div id="message">message area</div>
 </body>
