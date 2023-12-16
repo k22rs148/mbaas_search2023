@@ -130,6 +130,17 @@
                     showResults(results);
                 })
         }
+
+        function searchDefenceGT() {
+            let defence = parseInt($("#defence").val(), 10);
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .greaterThan("defence", defence)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
     </script>
 </head>
 
